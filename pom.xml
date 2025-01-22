@@ -3,19 +3,63 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
    <modelVersion>4.0.0</modelVersion>
    <groupId>io.github.ace-lectures.2aa4</groupId>
-   <artifactId>a1-hajariws</artifactId> <!-- this is the first part of the name of your jar file after 'mvn package' -->
+   <artifactId>a1-hajariws</artifactId>
    <packaging>jar</packaging>
-   <version>0.1.0</version><!-- this is the second part of the name of your jar file after 'mvn package' -->
+   <version>1.0</version>
 
-   <!-- Start:: configuring Java version to Java 8 -->
+   <!-- Properties -->
    <properties>
-      <java.version>22.0.2</java.version>
+      <java.version>17</java.version>
+      <mainClass>mazerunner.Main</mainClass>
    </properties>
-   <!-- End:: configuring Java version to Java 8 -->
 
-   <!-- Start:: This specifies the main class for the jar file to be executed by 'java -jar filename.jar' -->
+   <!-- Dependencies -->
+   <dependencies>
+      <!-- Command Line Parsing -->
+      <dependency>
+         <groupId>commons-cli</groupId>
+         <artifactId>commons-cli</artifactId>
+         <version>1.6.0</version>
+      </dependency>
+      <!-- Logging with Log4j -->
+      <dependency>
+         <groupId>org.apache.logging.log4j</groupId>
+         <artifactId>log4j-api</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>org.apache.logging.log4j</groupId>
+         <artifactId>log4j-core</artifactId>
+      </dependency>
+   </dependencies>
+
+   <!-- Dependency Management -->
+   <dependencyManagement>
+      <dependencies>
+         <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-bom</artifactId>
+            <version>2.22.1</version>
+            <scope>import</scope>
+            <type>pom</type>
+         </dependency>
+      </dependencies>
+   </dependencyManagement>
+
+   <!-- Build Configuration -->
    <build>
+      <finalName>mazerunner</finalName>
       <plugins>
+         <!-- Maven Compiler Plugin -->
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.11.0</version>
+            <configuration>
+               <source>${java.version}</source>
+               <target>${java.version}</target>
+            </configuration>
+         </plugin>
+         <!-- Maven Shade Plugin -->
          <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-shade-plugin</artifactId>
@@ -36,18 +80,12 @@
                </execution>
             </executions>
          </plugin>
-       </plugins>
+         <!-- Spring Boot Maven Plugin -->
+         <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <version>3.2.0</version>
+         </plugin>
+      </plugins>
    </build>
-   <!-- End:: This specifies the main class for the jar file to be executed by 'java -jar filename.jar' -->
-
-   <!-- tag::joda[] -->
-   <dependencies>
-      <dependency>
-         <groupId>joda-time</groupId>
-         <artifactId>joda-time</artifactId>
-         <version>2.2</version>
-      </dependency>
-   </dependencies>
-   <!-- end::joda[] -->
-
 </project>
