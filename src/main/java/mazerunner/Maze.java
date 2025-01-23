@@ -1,11 +1,9 @@
 package mazerunner;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Maze 
 {
@@ -24,13 +22,20 @@ public class Maze
         }
     }
 
-    public char[][] getMaze()
+    public ArrayList<char[]> getMaze()
     {
-        
+        return maze;
     }
 
     public void printMaze()
     {
-        
+        for (char[] row : maze) 
+        { 
+            for (char cell : row)
+            {
+                System.out.print(cell);
+            }
+            System.out.println();
+        }
     }
 }
