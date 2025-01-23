@@ -1,6 +1,6 @@
 package mazerunner;
 
-public class MazeExplorer 
+public class MazeSolver
 {
     
 }

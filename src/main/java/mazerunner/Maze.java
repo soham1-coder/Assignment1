@@ -3,32 +3,34 @@ package mazerunner;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Maze 
 {
-    private char[][] maze; //stores the maze in a 2d array
+    private ArrayList<char[]> maze; //stores the maze in an ArrayList of character arrays
 
-    public void loadMaze(String filePath) throws FileNotFoundException
+    public void loadMaze(String filePath) throws IOException
     {
-        BufferedReader reader = new BufferedReader(new FileReader(filePath));
+        maze = new ArrayList<>(); //initializes the ArrayList
 
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) 
+        {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                maze.add(line.toCharArray()); //converts the line to char array and adds to list
+            }
+        }
     }
 
     public char[][] getMaze()
     {
-        return maze;
+        
     }
 
     public void printMaze()
     {
-        for (int i = 0; i < maze.length; i++) 
-        {
-            for (int j = 0; j < maze[i].length; j++) 
-            {
-                System.out.print(maze[i][j]);
-            }
-            System.out.println();
-        }
-
+        
     }
 }
