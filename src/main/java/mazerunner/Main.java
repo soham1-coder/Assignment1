@@ -1,8 +1,5 @@
 package mazerunner;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.DefaultParser;
@@ -16,9 +13,10 @@ public class Main {
 
     private static final Logger logger = LogManager.getLogger();
 
-    public static void main(String[] args) {
-        logger.info("** Starting Maze Runner");
+    public static void main(String[] args)
+    {
 
+        logger.info("** Starting Maze Runner");
         Options options = new Options();
         options.addOption("i", true, "Input file containing the maze");
 
@@ -26,7 +24,8 @@ public class Main {
 
         try {
 
-            CommandLine cmd = parser.parse(options, args); //Parse command line arguments
+            //parses command line arguments for options
+            CommandLine cmd = parser.parse(options, args); 
             String inputFilePath = cmd.getOptionValue("i");
 
             if (inputFilePath == null) {
@@ -35,18 +34,12 @@ public class Main {
             }
 
             logger.info("**** Reading the maze from file " + inputFilePath);
-            BufferedReader reader = new BufferedReader(new FileReader(inputFilePath));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                for (int idx = 0; idx < line.length(); idx++) {
-                    if (line.charAt(idx) == '#') {
-                        logger.info("WALL ");
-                    } else if (line.charAt(idx) == ' ') {
-                    logger.info("PASS ");
-                    }
-                }
-                logger.info(System.lineSeparator());
-            }
+
+            Maze maze = new Maze(inputFilePath);
+            maze.printMaze(); 
+
+            MazeExplorer explorer = new MazeExplorer(maze); // Create explorer with maze
+            
         }
 
         catch (ParseException e) {
