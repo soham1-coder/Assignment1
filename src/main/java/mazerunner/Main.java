@@ -35,10 +35,20 @@ public class Main {
 
             logger.info("**** Reading the maze from file " + inputFilePath);
 
-            Maze maze = new Maze(inputFilePath);
+            Maze maze = new Maze(inputFilePath); //creates maze based on given maze
             maze.printMaze(); 
 
-            MazeExplorer explorer = new MazeExplorer(maze); // Create explorer with maze
+            MazeExplorer explorer = new MazeExplorer(maze); //creates explorer for given maze
+
+            System.out.println(explorer.getX());
+            System.out.println(explorer.getY());
+            explorer.move();
+            //explorer.turn();
+            explorer.turn();
+            explorer.move();
+            System.out.println(explorer.getX());
+            System.out.println(explorer.getY());
+
             
         }
 

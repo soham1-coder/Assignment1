@@ -41,7 +41,6 @@ public class Maze
         return 0;
     }
 
-
     public ArrayList<char[]> getMaze()
     {
         return maze;
