@@ -22,6 +22,14 @@ public class Maze
         }
     }
 
+
+    public void buildMaze()
+    {
+
+
+
+    }
+    
     public ArrayList<char[]> getMaze()
     {
         return maze;
