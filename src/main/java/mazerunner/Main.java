@@ -38,18 +38,9 @@ public class Main {
             Maze maze = new Maze(inputFilePath); //creates maze based on given maze
             maze.printMaze(); 
 
-            MazeExplorer explorer = new MazeExplorer(maze); //creates explorer for given maze
+            MazeExplorer explorer = new MazeExplorer(); //creates explorer
 
-            System.out.println(explorer.getX());
-            System.out.println(explorer.getY());
-            explorer.move();
-            //explorer.turn();
-            explorer.turn();
-            explorer.move();
-            System.out.println(explorer.getX());
-            System.out.println(explorer.getY());
-
-            
+            Solver solver = new Solver(maze);            
         }
 
         catch (ParseException e) {

@@ -4,7 +4,7 @@ package mazerunner;
 public enum Direction {
     UP, DOWN, LEFT, RIGHT;
 
-    public Direction turn() 
+    public Direction changeRight() 
     {
         switch (this) 
         {
@@ -16,4 +16,19 @@ public enum Direction {
         }
                 return null;
     }
+
+    public Direction changeLeft() 
+    {
+        switch (this) 
+        {
+            case UP: return LEFT;
+            case RIGHT: return UP;
+            case DOWN: return RIGHT;
+            case LEFT: return DOWN;
+            default: System.err.println("invalid direction");
+        }
+                return null;
+    }
+
+    
 }

@@ -7,14 +7,17 @@ public class MazeExplorer
     private int y;
 
     Direction currentDirection; 
-    Maze maze;
 
-    public MazeExplorer(Maze maze)
+    public MazeExplorer()
     {
         this.x = 0;
         this.y = 0;
         this.currentDirection = Direction.RIGHT; //start facing RIGHT
-        //this.y = maze.findEntrance(); //sets starting y position to entrance
+    }
+
+    public void start(int y)
+    {
+        this.y = y;
     }
 
     public void move()
@@ -36,9 +39,15 @@ public class MazeExplorer
         }
     }
 
-    public void turn() 
+    public void turnRight() 
     {
-        currentDirection = currentDirection.turn();
+        currentDirection = currentDirection.changeRight();
+        System.out.println(currentDirection);
+    }
+
+    public void turnLeft() 
+    {
+        currentDirection = currentDirection.changeLeft();
         System.out.println(currentDirection);
     }
 
