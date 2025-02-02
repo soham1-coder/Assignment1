@@ -14,6 +14,10 @@ public class Maze
         loadMaze(filePath);
     }
 
+    public Boolean wallCheck(int x, int y)
+    {
+        return maze.get(x)[y] == '#';
+    } 
 
     public void loadMaze(String filePath) throws IOException
     {

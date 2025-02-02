@@ -15,8 +15,9 @@ public class MazeExplorer
         this.currentDirection = Direction.RIGHT; //start facing RIGHT
     }
 
-    public void start(int y)
+    public void setPosition(int x, int y)
     {
+        this.x = x;
         this.y = y;
     }
 
