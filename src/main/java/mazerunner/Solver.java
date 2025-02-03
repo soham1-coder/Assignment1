@@ -11,18 +11,27 @@ public class Solver
         this.solvingMaze = solvingMaze;
         this.explorer = new MazeExplorer();
     }
+
     void solve()
     {
         explorer.setPosition(0,solvingMaze.findEntrance()); //sets y position to entrance
 
-        while (wallChecker(explorer.getX()+1,explorer.getY()))
+        while (!solvingMaze.checkExit(explorer.getX(), explorer.getY()))
         {   
-            explorer.move();
-            explorer.turnRight();
-            explorer.move();
-            System.out.println(explorer.getX());
-            System.out.println(explorer.getY());
+            if (!wallChecker(explorer.getX()+1, explorer.getY())) //check for right wall
+            {
+                explorer.turnRight();
+            }
 
+            if (!wallChecker(explorer.getX(), explorer.getY()+1)) //check for forward wall
+            {
+                explorer.move();
+            } 
+            
+            else 
+            {
+                explorer.turnLeft();
+            }
         }
     }   
 
@@ -31,7 +40,7 @@ public class Solver
         return solvingMaze.wallCheck(x,y); 
     }
 
-}    
+}
 
 
 

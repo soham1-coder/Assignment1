@@ -40,7 +40,8 @@ public class Main {
 
             MazeExplorer explorer = new MazeExplorer(); //creates explorer
 
-            Solver solver = new Solver(maze);            
+            Solver solver = new Solver(maze);   
+            solver.solve();         
         }
 
         catch (ParseException e) {
