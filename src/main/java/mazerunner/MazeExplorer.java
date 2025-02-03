@@ -23,21 +23,21 @@ public class MazeExplorer
 
     public void move()
     {
-        switch (currentDirection)
-        {
-            case LEFT:
-                x--;
-                break;        
-            case RIGHT:
-                x++;
-                break;
-            case UP:
-                y--;
-                break;
-            case DOWN:
-                y++;
-                break;
-        }
+        switch (this.currentDirection)
+    {
+        case LEFT:
+            x--;  //move left 
+            break;        
+        case RIGHT:
+            x++;  //move right 
+            break;
+        case UP:
+            y--;  //move up 
+            break;
+        case DOWN:
+            y++;  //move down 
+            break;
+    }
     }
 
     public void turnRight() 
@@ -61,4 +61,24 @@ public class MazeExplorer
     {
         return y;
     }
+
+    public int getDirectionX()
+{
+    switch (currentDirection)
+    {
+        case LEFT: return -1;  // Moving left decreases X
+        case RIGHT: return 1;  // Moving right increases X
+        default: return 0;     // No change in X for UP/DOWN
+    }
+}
+
+public int getDirectionY()
+{
+    switch (currentDirection)
+    {
+        case UP: return -1;   // Moving up decreases Y
+        case DOWN: return 1;  // Moving down increases Y
+        default: return 0;    // No change in Y for LEFT/RIGHT
+    }
+}
 }

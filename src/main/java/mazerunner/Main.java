@@ -41,7 +41,8 @@ public class Main {
             MazeExplorer explorer = new MazeExplorer(); //creates explorer
 
             Solver solver = new Solver(maze);   
-            solver.solve();         
+            solver.solve();  
+            solver.printPath();       
         }
 
         catch (ParseException e) {

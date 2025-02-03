@@ -44,15 +44,10 @@ public class Maze
         }
         return 0;
     }
-    
+
     public boolean checkExit(int x, int y) 
     {
-        if (x < 0 || x >= maze.size() || y < 0 || y >= maze.get(0).length)
-        {
-            return false;
-        }
-        
-        return (y == 0 || y == maze.get(0).length - 1) && maze.get(x)[y] == ' ';
+        return  (y == maze.get(0).length - 1) && maze.get(x)[y] == ' ';
     }
     
 
