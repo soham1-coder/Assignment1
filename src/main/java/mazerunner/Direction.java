@@ -2,7 +2,7 @@ package mazerunner;
 
 //store directions in enum to avoid magic numbers
 public enum Direction {
-    UP, DOWN, LEFT, RIGHT;
+    UP, DOWN, LEFT, RIGHTn;
 
     public Direction changeRight() 
     {
